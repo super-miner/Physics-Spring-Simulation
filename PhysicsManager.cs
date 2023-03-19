@@ -32,7 +32,7 @@ public class PhysicsManager
 
             foreach (PhysicsHinge physicsHinge in physicsHinges) {
                 if (physicsHinge.mass > 0.0f) {
-                    physicsHinge.queuedForces.Add(new Vector2(0.0f, 9.81f) * physicsHinge.mass);
+                    physicsHinge.queuedForces.Add(new Force("Gravity Force", new Vector2(0.0f, 9.81f) * physicsHinge.mass));
                 }
 
                 physicsHinge.Simulate(deltaTime * simulationSpeed / simulationsPerFrame);

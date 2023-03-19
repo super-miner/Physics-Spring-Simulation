@@ -43,10 +43,10 @@ public class PhysicsJoint
         Vector2 swingDirection2 = connection2.velocity == Vector2.Zero ? Vector2.Zero : -Vector2.Normalize(perpDeltaConnections * Vector2.Dot(connection2.velocity, perpDeltaConnections));
 
         if (connection1.mass > 0.0f) {
-            connection1.queuedForces.Add(frictionForce1 * swingDirection1);
+            connection1.queuedForces.Add(new Force("Friction Force", frictionForce1 * swingDirection1));
         }
         if (connection2.mass > 0.0f) {
-            connection2.queuedForces.Add(frictionForce2 * swingDirection2);
+            connection2.queuedForces.Add(new Force("Friction Force", frictionForce2 * swingDirection2));
         }
     }
 

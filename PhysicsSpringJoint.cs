@@ -20,21 +20,21 @@ public class PhysicsSpringJoint : PhysicsJoint
             Vector2 deltaConnections = Vector2.Normalize(connection2.position - connection1.position);
             Vector2 forceSpring = deltaConnections * -forceMagnitude;
 
-            connection1.queuedForces.Add(-forceSpring);
-            connection2.queuedForces.Add(forceSpring);
+            connection1.queuedForces.Add(new Force("Spring Force", -forceSpring));
+            connection2.queuedForces.Add(new Force("Spring Force", forceSpring));
 
             if (connection1.mass > 0.0f) {
                 float criticalDampingCoefficient1 = 2 * MathF.Sqrt(springCoefficient * connection1.mass);
                 Vector2 forceDamping1 = -(dampingCoefficient / criticalDampingCoefficient1) * (deltaConnections * Vector2.Dot(connection1.velocity, deltaConnections));
 
-                connection1.queuedForces.Add(forceDamping1);
+                connection1.queuedForces.Add(new Force("Damping Force", forceDamping1));
             }
 
             if (connection2.mass > 0.0f) {
                 float criticalDampingCoefficient2 = 2 * MathF.Sqrt(springCoefficient * connection2.mass);
                 Vector2 forceDamping2 = -(dampingCoefficient / criticalDampingCoefficient2) * (deltaConnections * Vector2.Dot(connection2.velocity, deltaConnections));
 
-                connection2.queuedForces.Add(forceDamping2);
+                connection2.queuedForces.Add(new Force("Damping Force", forceDamping2));
             }
 
             base.Simulate(deltaTime);

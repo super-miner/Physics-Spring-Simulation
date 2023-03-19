@@ -10,9 +10,9 @@ public class PhysicsHinge
     public float mass = 0.0f;
     public Vector2 position = Vector2.Zero;
     public Vector2 velocity = Vector2.Zero;
-    public List<Vector2> queuedForces = new List<Vector2>();
+    public List<Force> queuedForces = new List<Force>();
 
-    private List<Vector2> forces = new List<Vector2>();
+    private List<Force> forces = new List<Force>();
 
     public PhysicsHinge(float mass, Vector2 position) {
         this.mass = mass;
@@ -33,8 +33,8 @@ public class PhysicsHinge
         }
 
         if (mass > 0.0f) {
-            Vector2 netForce = GetNetForce();
-            Vector2 acceleration = netForce / mass;
+            Force netForce = GetNetForce();
+            Vector2 acceleration = netForce.vector / mass;
 
             velocity += acceleration * deltaTime;
             position += velocity * deltaTime;
@@ -74,12 +74,12 @@ public class PhysicsHinge
         }
     }
 
-    public Vector2 GetNetForce() {
+    public Force GetNetForce() {
         Vector2 netForce = Vector2.Zero;
         foreach (Vector2 force in forces) {
             netForce += force;
         }
-        return netForce;
+        return new Force("Net Force", netForce);
     }
 
     public void SetEnabled(bool value) {
