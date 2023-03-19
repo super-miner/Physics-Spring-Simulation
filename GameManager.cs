@@ -180,7 +180,7 @@ public class GameManager : Game
         PhysicsManager.GetInstance().physicsHinges.Add(ball1);
         PhysicsManager.GetInstance().physicsHinges.Add(ball2);
 
-        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball1, ball2, 1.0f, 0.05f, 15.0f, 5.0f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball1, ball2, 1.0f, 0.3f, 15.0f, 5.0f));
     }
 
     private void LoadSimulation2() {

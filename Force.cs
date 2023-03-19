@@ -11,7 +11,7 @@ public class Force
         this.vector = new Vector2(x, y);
 
         if (vector != vector) { // Checks if NaN
-            Console.WriteLine("The force " + name + "is NaN."); // TODO: Throw warning
+            Console.WriteLine("The force " + name + " is NaN."); // TODO: Throw warning
         }
     }
 
@@ -20,7 +20,7 @@ public class Force
         this.vector = vector;
 
         if (vector != vector) { // Checks if NaN
-            Console.WriteLine("The force " + name + "is NaN."); // TODO: Throw warning
+            Console.WriteLine("The force " + name + " is NaN."); // TODO: Throw warning
         }
     }
 }
