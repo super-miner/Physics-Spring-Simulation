@@ -6,7 +6,6 @@ public class PhysicsManager
 {
     public static PhysicsManager instance = null;
 
-    public int pixelsPerMeter = 100;
     public int simulationsPerFrame = 10;
     public float simulationSpeed = 1.0f;
     public float forceDisplayMultiplyer = 0.2f;

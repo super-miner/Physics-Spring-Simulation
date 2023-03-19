@@ -11,7 +11,7 @@ public class InteractionController
         MouseState mouse = Mouse.GetState();
 
         if (mouse.LeftButton == ButtonState.Pressed) {
-            Vector2 mousePosition = mouse.Position.ToVector2() / PhysicsManager.GetInstance().pixelsPerMeter;
+            Vector2 mousePosition = mouse.Position.ToVector2() / Camera.main.pixelsPerMeter;
 
             if (objectSelected) {
                 selectedHinge.position = mousePosition + selectedOffset;

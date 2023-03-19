@@ -54,6 +54,6 @@ public class PhysicsJoint
         float distance = Vector2.Distance(connection1.position, connection2.position);
         float displacementFromEquilibrium = MathF.Abs(distance - equilibriumLength);
 
-        ShapeExtensions.DrawLine(spriteBatch, connection1.position * PhysicsManager.GetInstance().pixelsPerMeter, connection2.position * PhysicsManager.GetInstance().pixelsPerMeter, Color.Lerp(Color.Red, Color.Blue, 1 - (displacementFromEquilibrium / equilibriumLength)), 4.0f, 1);
+        ShapeExtensions.DrawLine(spriteBatch, Camera.main.WorldToScreenSpace(connection1.position), Camera.main.WorldToScreenSpace(connection2.position), Color.Lerp(Color.Red, Color.Blue, 1 - (displacementFromEquilibrium / equilibriumLength)), 4.0f, 1);
     }
 }

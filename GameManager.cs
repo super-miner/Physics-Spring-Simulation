@@ -9,6 +9,7 @@ namespace PhysicsSimulation;
 public class GameManager : Game
 {
     public InteractionController interactionController;
+    public Camera mainCamera;
     public bool simulating = true;
 
     private GraphicsDeviceManager _graphics;
@@ -22,6 +23,7 @@ public class GameManager : Game
     }
 
     protected override void Initialize() {
+        mainCamera = new Camera(Vector2.Zero, 100);
         interactionController = new InteractionController();
 
         MyraEnvironment.Game = this;

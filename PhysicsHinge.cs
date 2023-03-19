@@ -54,8 +54,8 @@ public class PhysicsHinge
     }
 
     public void Draw(SpriteBatch spriteBatch) {
-        ShapeExtensions.DrawCircle(spriteBatch, position * PhysicsManager.GetInstance().pixelsPerMeter, PhysicsManager.GetInstance().circleGrabRadius * PhysicsManager.GetInstance().pixelsPerMeter, 100, enabled ? Color.Red : Color.LightGray, 1.0f, 0);
-        ShapeExtensions.DrawCircle(spriteBatch, position * PhysicsManager.GetInstance().pixelsPerMeter, (PhysicsManager.GetInstance().circleConnectorRadius / 2) * PhysicsManager.GetInstance().pixelsPerMeter, 100, enabled ? Color.Red : Color.LightGray, PhysicsManager.GetInstance().circleConnectorRadius * PhysicsManager.GetInstance().pixelsPerMeter, 0);
+        ShapeExtensions.DrawCircle(spriteBatch, Camera.main.WorldToScreenSpace(position), Camera.main.WorldToScreenSpace(PhysicsManager.GetInstance().circleGrabRadius), 100, enabled ? Color.Red : Color.LightGray, 1.0f, 0);
+        ShapeExtensions.DrawCircle(spriteBatch, Camera.main.WorldToScreenSpace(position), Camera.main.WorldToScreenSpace(PhysicsManager.GetInstance().circleConnectorRadius / 2), 100, enabled ? Color.Red : Color.LightGray, Camera.main.WorldToScreenSpace(PhysicsManager.GetInstance().circleConnectorRadius), 0);
     }
 
     public void DrawForces(SpriteBatch spriteBatch) {
@@ -69,7 +69,7 @@ public class PhysicsHinge
 
         foreach (Force force in forces) {
             if (force.vector.LengthSquared() > 0.0001f) {
-                DrawArrow(spriteBatch, position * PhysicsManager.GetInstance().pixelsPerMeter, (position + force.vector * PhysicsManager.GetInstance().forceDisplayMultiplyer) * PhysicsManager.GetInstance().pixelsPerMeter, Color.Green, 1.0f, new Vector2(10.0f, 4.0f));
+                DrawArrow(spriteBatch, Camera.main.WorldToScreenSpace(position), Camera.main.WorldToScreenSpace(position + force.vector * PhysicsManager.GetInstance().forceDisplayMultiplyer), Color.Green, 1.0f, new Vector2(10.0f, 4.0f));
             }
         }
     }
