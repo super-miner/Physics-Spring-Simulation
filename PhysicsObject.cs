@@ -6,8 +6,6 @@ using MonoGame.Extended;
 
 public class PhysicsObject
 {
-    // Test
-
     public bool enabled = true;
     public float mass = 0.0f;
     public Vector2 position = Vector2.Zero;
