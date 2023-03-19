@@ -48,7 +48,7 @@ public class PhysicsHinge
     }
 
     public void RealizeForces() {
-        forces = new List<Vector2>(queuedForces);
+        forces = new List<Force>(queuedForces);
 
         queuedForces.Clear();
     }
@@ -67,17 +67,17 @@ public class PhysicsHinge
             return;
         }
 
-        foreach (Vector2 force in forces) {
-            if (force.LengthSquared() > 0.0001f) {
-                DrawArrow(spriteBatch, position * PhysicsManager.GetInstance().pixelsPerMeter, (position + force * PhysicsManager.GetInstance().forceDisplayMultiplyer) * PhysicsManager.GetInstance().pixelsPerMeter, Color.Green, 1.0f, new Vector2(10.0f, 4.0f));
+        foreach (Force force in forces) {
+            if (force.vector.LengthSquared() > 0.0001f) {
+                DrawArrow(spriteBatch, position * PhysicsManager.GetInstance().pixelsPerMeter, (position + force.vector * PhysicsManager.GetInstance().forceDisplayMultiplyer) * PhysicsManager.GetInstance().pixelsPerMeter, Color.Green, 1.0f, new Vector2(10.0f, 4.0f));
             }
         }
     }
 
     public Force GetNetForce() {
         Vector2 netForce = Vector2.Zero;
-        foreach (Vector2 force in forces) {
-            netForce += force;
+        foreach (Force force in forces) {
+            netForce += force.vector;
         }
         return new Force("Net Force", netForce);
     }
