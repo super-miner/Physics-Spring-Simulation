@@ -38,7 +38,6 @@ public class PhysicsObject
 
             velocity += acceleration * deltaTime;
             position += velocity * deltaTime;
-            Console.WriteLine(position);
         }
     }
 
