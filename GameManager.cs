@@ -8,6 +8,8 @@ namespace PhysicsSimulation;
 
 public class GameManager : Game
 {
+    public static GameManager instance = null;
+    
     public InteractionController interactionController;
     public Camera mainCamera;
     public bool simulating = true;
@@ -17,13 +19,17 @@ public class GameManager : Game
     private Desktop _desktop;
 
     public GameManager() {
+        if (instance == null) {
+            instance = this;
+        }
+
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
 
     protected override void Initialize() {
-        mainCamera = new Camera(Vector2.Zero, 100);
+        mainCamera = new Camera(_graphics, Vector2.Zero, 100);
         interactionController = new InteractionController();
 
         MyraEnvironment.Game = this;
@@ -176,8 +182,8 @@ public class GameManager : Game
     }
 
     private void LoadSimulation1() {
-        PhysicsHinge ball1 = new PhysicsHinge(0.0f, new Vector2(4.0f, 0.0f));
-        PhysicsHinge ball2 = new PhysicsHinge(0.5f, new Vector2(4.5f, 0.0f));
+        PhysicsHinge ball1 = new PhysicsHinge(0.0f, new Vector2(0.0f, 0.0f));
+        PhysicsHinge ball2 = new PhysicsHinge(0.5f, new Vector2(0.5f, 0.0f));
 
         PhysicsManager.GetInstance().physicsHinges.Add(ball1);
         PhysicsManager.GetInstance().physicsHinges.Add(ball2);

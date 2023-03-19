@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -6,13 +7,19 @@ public class InteractionController
     private bool objectSelected = false;
     private PhysicsHinge selectedHinge = null;
     private Vector2 selectedOffset = Vector2.Zero;
+    private int lastScrollWheelValue = 0;
 
     public void Update(float deltaTime) {
         MouseState mouse = Mouse.GetState();
 
-        if (mouse.LeftButton == ButtonState.Pressed) {
-            Vector2 mousePosition = mouse.Position.ToVector2() / Camera.main.pixelsPerMeter;
+        int deltaScroll = mouse.ScrollWheelValue - lastScrollWheelValue;
+        lastScrollWheelValue = mouse.ScrollWheelValue;
 
+        Camera.main.pixelsPerMeter = MathHelper.Clamp(Camera.main.pixelsPerMeter + deltaScroll / 25, 10, 1000);
+
+        Vector2 mousePosition = Camera.main.ScreenToWorldSpace(mouse.Position.ToVector2());
+
+        if (mouse.LeftButton == ButtonState.Pressed) {
             if (objectSelected) {
                 selectedHinge.position = mousePosition + selectedOffset;
             }
