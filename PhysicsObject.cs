@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 
-public class PhysicsObject
+public class PhysicsHinge
 {
     public bool enabled = true;
     public float mass = 0.0f;
@@ -14,12 +14,12 @@ public class PhysicsObject
 
     private List<Vector2> forces = new List<Vector2>();
 
-    public PhysicsObject(float mass, Vector2 position) {
+    public PhysicsHinge(float mass, Vector2 position) {
         this.mass = mass;
         this.position = position;
     }
 
-    public PhysicsObject(float mass, Vector2 position, Vector2 velocity) {
+    public PhysicsHinge(float mass, Vector2 position, Vector2 velocity) {
         this.mass = mass;
         this.position = position;
         this.velocity = velocity;

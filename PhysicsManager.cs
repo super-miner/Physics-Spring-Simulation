@@ -13,7 +13,7 @@ public class PhysicsManager
     public float circleGrabRadius = 0.25f;
     public float circleConnectorRadius = 0.1f;
     public bool displayForces = false;
-    public List<PhysicsObject> physicsObjects = new List<PhysicsObject>();
+    public List<PhysicsHinge> physicsHinges = new List<PhysicsHinge>();
     public List<PhysicsJoint> physicsJoints = new List<PhysicsJoint>();
 
     public static PhysicsManager GetInstance() {
@@ -30,20 +30,20 @@ public class PhysicsManager
                 physicsJoint.Simulate(deltaTime * simulationSpeed / simulationsPerFrame);
             }
 
-            foreach (PhysicsObject physicsObject in physicsObjects) {
-                if (physicsObject.mass > 0.0f) {
-                    physicsObject.queuedForces.Add(new Vector2(0.0f, 9.81f) * physicsObject.mass);
+            foreach (PhysicsHinge physicsHinge in physicsHinges) {
+                if (physicsHinge.mass > 0.0f) {
+                    physicsHinge.queuedForces.Add(new Vector2(0.0f, 9.81f) * physicsHinge.mass);
                 }
 
-                physicsObject.Simulate(deltaTime * simulationSpeed / simulationsPerFrame);
+                physicsHinge.Simulate(deltaTime * simulationSpeed / simulationsPerFrame);
             }
 
             foreach (PhysicsJoint physicsJoint in physicsJoints) {
                 physicsJoint.PostSimulate(deltaTime * simulationSpeed / simulationsPerFrame);
             }
 
-            foreach (PhysicsObject physicsObject in physicsObjects) {
-                physicsObject.PostSimulate(deltaTime * simulationSpeed / simulationsPerFrame);
+            foreach (PhysicsHinge physicsHinge in physicsHinges) {
+                physicsHinge.PostSimulate(deltaTime * simulationSpeed / simulationsPerFrame);
             }
         }
     }
@@ -53,13 +53,13 @@ public class PhysicsManager
             physicsJoint.Draw(spriteBatch);
         }
 
-        foreach (PhysicsObject physicsObject in physicsObjects) {
-            physicsObject.Draw(spriteBatch);
+        foreach (PhysicsHinge physicsHinge in physicsHinges) {
+            physicsHinge.Draw(spriteBatch);
         }
 
         if (displayForces) {
-            foreach (PhysicsObject physicsObject in physicsObjects) {
-                physicsObject.DrawForces(spriteBatch);
+            foreach (PhysicsHinge physicsHinge in physicsHinges) {
+                physicsHinge.DrawForces(spriteBatch);
             }
         }
     }

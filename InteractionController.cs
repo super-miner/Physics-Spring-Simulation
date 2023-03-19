@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 public class InteractionController
 {
     private bool objectSelected = false;
-    private PhysicsObject selectedObject = null;
+    private PhysicsHinge selectedHinge = null;
     private Vector2 selectedOffset = Vector2.Zero;
 
     public void Update(float deltaTime) {
@@ -14,50 +14,50 @@ public class InteractionController
             Vector2 mousePosition = mouse.Position.ToVector2() / PhysicsManager.GetInstance().pixelsPerMeter;
 
             if (objectSelected) {
-                selectedObject.position = mousePosition + selectedOffset;
+                selectedHinge.position = mousePosition + selectedOffset;
             }
             else {
-                PhysicsObject nearestObject = GetNearestObject(mousePosition);
-                float distanceSquared = Vector2.DistanceSquared(mousePosition, nearestObject.position);
+                PhysicsHinge nearestHinge = GetNearestHinge(mousePosition);
+                float distanceSquared = Vector2.DistanceSquared(mousePosition, nearestHinge.position);
 
                 if (distanceSquared <= PhysicsManager.GetInstance().circleGrabRadius * PhysicsManager.GetInstance().circleGrabRadius) {
                     objectSelected = true;
 
-                    SelectObject(mousePosition, nearestObject);
+                    SelectHinge(mousePosition, nearestHinge);
                 }
             }
         }
         else if (mouse.LeftButton == ButtonState.Released && objectSelected) {
             objectSelected = false;
 
-            DeselectObject();
+            DeselectHinge();
         }
     }
 
-    public void SelectObject(Vector2 mousePosition, PhysicsObject physicsObject) {
-        selectedObject = physicsObject;
-        selectedOffset = physicsObject.position - mousePosition;
+    public void SelectHinge(Vector2 mousePosition, PhysicsHinge physicsHinge) {
+        selectedHinge = physicsHinge;
+        selectedOffset = physicsHinge.position - mousePosition;
 
-        selectedObject.SetEnabled(false);
+        selectedHinge.SetEnabled(false);
     }
 
-    public void DeselectObject() {
-        selectedObject.SetEnabled(true);
+    public void DeselectHinge() {
+        selectedHinge.SetEnabled(true);
 
-        selectedObject = null;
+        selectedHinge = null;
         selectedOffset = Vector2.Zero;
     }
 
-    public PhysicsObject GetNearestObject(Vector2 position) {
-        PhysicsObject nearestObject = null;
+    public PhysicsHinge GetNearestHinge(Vector2 position) {
+        PhysicsHinge nearestHinge = null;
         float nearestDistanceSquared = float.PositiveInfinity;
-        foreach (PhysicsObject physicsObject in PhysicsManager.GetInstance().physicsObjects) {
-            float distanceSquared = Vector2.DistanceSquared(position, physicsObject.position);
+        foreach (PhysicsHinge physicsHinge in PhysicsManager.GetInstance().physicsHinges) {
+            float distanceSquared = Vector2.DistanceSquared(position, physicsHinge.position);
             if (distanceSquared < nearestDistanceSquared) {
-                nearestObject = physicsObject;
+                nearestHinge = physicsHinge;
                 nearestDistanceSquared = distanceSquared;
             }
         }
-        return nearestObject;
+        return nearestHinge;
     }
 }

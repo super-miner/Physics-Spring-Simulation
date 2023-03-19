@@ -6,7 +6,7 @@ public class PhysicsSpringJoint : PhysicsJoint
     public float springCoefficient = 0.0f;
     public float dampingCoefficient = 0.0f;
 
-    public PhysicsSpringJoint(PhysicsObject connection1, PhysicsObject connection2, float equilibriumLength, float frictionCoefficient, float springCoefficient, float dampingCoefficient) : base(connection1, connection2, equilibriumLength, frictionCoefficient) {
+    public PhysicsSpringJoint(PhysicsHinge connection1, PhysicsHinge connection2, float equilibriumLength, float frictionCoefficient, float springCoefficient, float dampingCoefficient) : base(connection1, connection2, equilibriumLength, frictionCoefficient) {
         this.springCoefficient = springCoefficient;
         this.dampingCoefficient = dampingCoefficient;
     }

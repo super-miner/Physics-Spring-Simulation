@@ -5,13 +5,13 @@ using MonoGame.Extended;
 
 public class PhysicsJoint
 {
-    public PhysicsObject connection1;
-    public PhysicsObject connection2;
+    public PhysicsHinge connection1;
+    public PhysicsHinge connection2;
     public float equilibriumLength;
     public readonly float equilibriumLengthSquared;
     public float frictionCoefficient;
 
-    public PhysicsJoint(PhysicsObject connection1, PhysicsObject connection2, float equilibriumLength, float frictionCoefficient) {
+    public PhysicsJoint(PhysicsHinge connection1, PhysicsHinge connection2, float equilibriumLength, float frictionCoefficient) {
         this.connection1 = connection1;
         this.connection2 = connection2;
         this.equilibriumLength = equilibriumLength;
