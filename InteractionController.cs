@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -56,9 +55,6 @@ public class InteractionController
         else if (mouse.MiddleButton == ButtonState.Released && movingCamera) {
             movingCamera = false;
         }
-
-        Console.WriteLine(deltaMousePosition);
-        Console.WriteLine(Camera.main.position);
     }
 
     public void SelectHinge(Vector2 mousePosition, PhysicsHinge physicsHinge) {
