@@ -33,19 +33,21 @@ public class PhysicsJoint
         float firctionTorque1 = frictionForce1Pivot * PhysicsManager.GetInstance().circleConnectorRadius;
         float frictionForce1 = firctionTorque1 / connectionsDistance;
 
-        Vector2 swingDirection1 = connection1.velocity == Vector2.Zero ? Vector2.Zero : -Vector2.Normalize(perpDeltaConnections * Vector2.Dot(connection1.velocity, perpDeltaConnections));
+        Vector2 swingVector1 = connection1.velocity == Vector2.Zero ? Vector2.Zero : perpDeltaConnections * Vector2.Dot(connection1.velocity, perpDeltaConnections);
+        Vector2 swingDirection1 = swingVector1 == Vector2.Zero ? Vector2.Zero : -Vector2.Normalize(swingVector1);
 
         float normalForce2 = Vector2.Dot(connection1.GetNetForce().vector, deltaConnections);
         float frictionForce2Pivot = frictionCoefficient * normalForce2;
         float firctionTorque2 = frictionForce2Pivot * PhysicsManager.GetInstance().circleConnectorRadius;
         float frictionForce2 = firctionTorque2 / connectionsDistance;
 
-        Vector2 swingDirection2 = connection2.velocity == Vector2.Zero ? Vector2.Zero : -Vector2.Normalize(perpDeltaConnections * Vector2.Dot(connection2.velocity, perpDeltaConnections));
+        Vector2 swingVector2 = connection2.velocity == Vector2.Zero ? Vector2.Zero : perpDeltaConnections * Vector2.Dot(connection2.velocity, perpDeltaConnections);
+        Vector2 swingDirection2 = swingVector2 == Vector2.Zero ? Vector2.Zero : -Vector2.Normalize(swingVector2);
 
-        if (connection1.mass > 0.0f) {
+        if (connection1.mass > 0.0f && swingDirection1 != Vector2.Zero) {
             connection1.queuedForces.Add(new Force("Friction Force", frictionForce1 * swingDirection1));
         }
-        if (connection2.mass > 0.0f) {
+        if (connection2.mass > 0.0f && swingDirection2 != Vector2.Zero) {
             connection2.queuedForces.Add(new Force("Friction Force", frictionForce2 * swingDirection2));
         }
     }
