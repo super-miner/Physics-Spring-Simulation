@@ -192,11 +192,11 @@ public class GameManager : Game
     }
 
     private void LoadSimulation2() {
-        PhysicsHinge ball1 = new PhysicsHinge(0.0f, new Vector2(4.0f, 0.0f));
-        PhysicsHinge ball2 = new PhysicsHinge(0.1f, new Vector2(4.5f, 0.0f));
-        PhysicsHinge ball3 = new PhysicsHinge(0.1f, new Vector2(5.0f, 0.0f));
-        PhysicsHinge ball4 = new PhysicsHinge(0.1f, new Vector2(5.5f, 0.0f));
-        PhysicsHinge ball5 = new PhysicsHinge(0.1f, new Vector2(6.0f, 0.0f));
+        PhysicsHinge ball1 = new PhysicsHinge(0.0f, new Vector2(0.0f, 0.0f));
+        PhysicsHinge ball2 = new PhysicsHinge(0.1f, new Vector2(0.5f, 0.0f));
+        PhysicsHinge ball3 = new PhysicsHinge(0.1f, new Vector2(1.0f, 0.0f));
+        PhysicsHinge ball4 = new PhysicsHinge(0.1f, new Vector2(1.5f, 0.0f));
+        PhysicsHinge ball5 = new PhysicsHinge(0.1f, new Vector2(2.0f, 0.0f));
 
         PhysicsManager.GetInstance().physicsHinges.Add(ball1);
         PhysicsManager.GetInstance().physicsHinges.Add(ball2);
@@ -211,8 +211,8 @@ public class GameManager : Game
     }
 
     private void LoadSimulation3() {
-        PhysicsHinge ball1 = new PhysicsHinge(0.5f, new Vector2(3.75f, 0.0f));
-        PhysicsHinge ball2 = new PhysicsHinge(0.5f, new Vector2(4.25f, 0.0f));
+        PhysicsHinge ball1 = new PhysicsHinge(0.5f, new Vector2(-0.25f, 0.0f));
+        PhysicsHinge ball2 = new PhysicsHinge(0.5f, new Vector2(0.25f, 0.0f));
 
         PhysicsManager.GetInstance().physicsHinges.Add(ball1);
         PhysicsManager.GetInstance().physicsHinges.Add(ball2);
@@ -221,19 +221,19 @@ public class GameManager : Game
     }
 
     private void LoadSimulation4() {
-        PhysicsHinge ball1 = new PhysicsHinge(0.0f, new Vector2(4.0f, 2.0f));
-        PhysicsHinge ball2 = new PhysicsHinge(0.1f, new Vector2(4.5f, 2.5f));
-        PhysicsHinge ball3 = new PhysicsHinge(0.1f, new Vector2(3.5f, 2.5f));
-        PhysicsHinge ball4 = new PhysicsHinge(0.1f, new Vector2(4.5f, 3.0f));
-        PhysicsHinge ball5 = new PhysicsHinge(0.1f, new Vector2(3.5f, 3.0f));
-        PhysicsHinge ball6 = new PhysicsHinge(0.1f, new Vector2(4.0f, 3.5f));
-        PhysicsHinge ball7 = new PhysicsHinge(0.1f, new Vector2(4.25f, 2.25f));
-        PhysicsHinge ball8 = new PhysicsHinge(0.1f, new Vector2(3.75f, 2.25f));
-        PhysicsHinge ball9 = new PhysicsHinge(0.1f, new Vector2(4.25f, 2.75f));
-        PhysicsHinge ball10 = new PhysicsHinge(0.1f, new Vector2(3.75f, 2.75f));
-        PhysicsHinge ball11 = new PhysicsHinge(0.1f, new Vector2(4.25f, 3.25f));
-        PhysicsHinge ball12 = new PhysicsHinge(0.1f, new Vector2(3.75f, 3.25f));
-        PhysicsHinge ball13 = new PhysicsHinge(0.1f, new Vector2(4.0f, 2.75f));
+        PhysicsHinge ball1 = new PhysicsHinge(0.0f, new Vector2(0.0f, 2.0f));
+        PhysicsHinge ball2 = new PhysicsHinge(0.1f, new Vector2(0.5f, 2.5f));
+        PhysicsHinge ball3 = new PhysicsHinge(0.1f, new Vector2(-0.5f, 2.5f));
+        PhysicsHinge ball4 = new PhysicsHinge(0.1f, new Vector2(0.5f, 3.0f));
+        PhysicsHinge ball5 = new PhysicsHinge(0.1f, new Vector2(-0.5f, 3.0f));
+        PhysicsHinge ball6 = new PhysicsHinge(0.1f, new Vector2(0.0f, 3.5f));
+        PhysicsHinge ball7 = new PhysicsHinge(0.1f, new Vector2(0.25f, 2.25f));
+        PhysicsHinge ball8 = new PhysicsHinge(0.1f, new Vector2(-0.25f, 2.25f));
+        PhysicsHinge ball9 = new PhysicsHinge(0.1f, new Vector2(0.25f, 2.75f));
+        PhysicsHinge ball10 = new PhysicsHinge(0.1f, new Vector2(-0.25f, 2.75f));
+        PhysicsHinge ball11 = new PhysicsHinge(0.1f, new Vector2(0.25f, 3.25f));
+        PhysicsHinge ball12 = new PhysicsHinge(0.1f, new Vector2(-0.25f, 3.25f));
+        PhysicsHinge ball13 = new PhysicsHinge(0.1f, new Vector2(0.0f, 2.75f));
 
         PhysicsManager.GetInstance().physicsHinges.Add(ball1);
         PhysicsManager.GetInstance().physicsHinges.Add(ball2);
