@@ -77,23 +77,6 @@ public class PhysicsHinge
         }
     }
 
-    public Force GetNetForce() {
-        Vector2 netForce = Vector2.Zero;
-        foreach (Force force in forces) {
-            netForce += force.vector;
-        }
-        return new Force("Net Force", netForce);
-    }
-
-    public void SetEnabled(bool value) {
-        if (enabled != value) {
-            velocity = Vector2.Zero;
-            forces.Clear();
-        }
-
-        enabled = value;
-    }
-
     private void DrawArrow(SpriteBatch spriteBatch, Vector2 startPosition, Vector2 endPosition, Color color, float thickness, Vector2 arrowHeadSize) {
         float distance = Vector2.Distance(startPosition, endPosition);
         Vector2 direction = endPosition - startPosition;
@@ -117,5 +100,22 @@ public class PhysicsHinge
         };
 
         ShapeExtensions.DrawPolygon(spriteBatch, lineEndPoint, points, color, thickness);
+    }
+
+    public Force GetNetForce() {
+        Vector2 netForce = Vector2.Zero;
+        foreach (Force force in forces) {
+            netForce += force.vector;
+        }
+        return new Force("Net Force", netForce);
+    }
+
+    public void SetEnabled(bool value) {
+        if (enabled != value) {
+            velocity = Vector2.Zero;
+            forces.Clear();
+        }
+
+        enabled = value;
     }
 }
