@@ -29,7 +29,8 @@ public class PhysicsJoint
         Vector2 perpDeltaConnections = new Vector2(-deltaConnections.Y, deltaConnections.X);
 
         float normalForce1 = Vector2.Dot(connection2.GetNetForce().vector, deltaConnections);
-        float frictionForce1Pivot = frictionCoefficient * normalForce1;
+        float frictionCoefficient1 = frictionCoefficient + connection2.frictionCoefficient;
+        float frictionForce1Pivot = frictionCoefficient1 * normalForce1;
         float firctionTorque1 = frictionForce1Pivot * PhysicsManager.GetInstance().circleConnectorRadius;
         float frictionForce1 = firctionTorque1 / connectionsDistance;
 
@@ -37,7 +38,8 @@ public class PhysicsJoint
         Vector2 swingDirection1 = swingVector1 == Vector2.Zero ? Vector2.Zero : -Vector2.Normalize(swingVector1);
 
         float normalForce2 = Vector2.Dot(connection1.GetNetForce().vector, deltaConnections);
-        float frictionForce2Pivot = frictionCoefficient * normalForce2;
+        float frictionCoefficient2 = frictionCoefficient + connection1.frictionCoefficient;
+        float frictionForce2Pivot = frictionCoefficient2 * normalForce2;
         float firctionTorque2 = frictionForce2Pivot * PhysicsManager.GetInstance().circleConnectorRadius;
         float frictionForce2 = firctionTorque2 / connectionsDistance;
 

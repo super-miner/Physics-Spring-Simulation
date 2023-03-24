@@ -10,19 +10,22 @@ public class PhysicsHinge
     public float mass = 0.0f;
     public Vector2 position = Vector2.Zero;
     public Vector2 velocity = Vector2.Zero;
+    public float frictionCoefficient = 0.0f;
     public List<Force> queuedForces = new List<Force>();
 
     private List<Force> forces = new List<Force>();
 
-    public PhysicsHinge(float mass, Vector2 position) {
+    public PhysicsHinge(float mass, Vector2 position, float frictionCoefficient) {
         this.mass = mass;
         this.position = position;
+        this.frictionCoefficient = frictionCoefficient;
     }
 
-    public PhysicsHinge(float mass, Vector2 position, Vector2 velocity) {
+    public PhysicsHinge(float mass, Vector2 position, Vector2 velocity, float frictionCoefficient) {
         this.mass = mass;
         this.position = position;
         this.velocity = velocity;
+        this.frictionCoefficient = frictionCoefficient;
     }
 
     public void Simulate(float deltaTime) {
