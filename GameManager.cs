@@ -63,6 +63,7 @@ public class GameManager : Game
         exampleSimulationValue.Items.Add(new ListItem("Chain of Springs"));
         exampleSimulationValue.Items.Add(new ListItem("No Fixed Point"));
         exampleSimulationValue.Items.Add(new ListItem("Suspended Ball"));
+        exampleSimulationValue.Items.Add(new ListItem("Cloth"));
         exampleSimulationValue.SelectedIndexChanged += (arg1, arg2) => {
             PhysicsManager.GetInstance().physicsHinges.Clear();
             PhysicsManager.GetInstance().physicsJoints.Clear();
@@ -79,6 +80,9 @@ public class GameManager : Game
                     break;
                 case 3:
                     LoadSimulation4();
+                    break;
+                case 4:
+                    LoadSimulation5();
                     break;
             }
         };
@@ -274,5 +278,41 @@ public class GameManager : Game
         PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball10, ball13, 0.75f, 0.1f, 15.0f, 0.3f));
         PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball11, ball13, 0.75f, 0.1f, 15.0f, 0.3f));
         PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball12, ball13, 0.75f, 0.1f, 15.0f, 0.3f));
+    }
+
+    private void LoadSimulation5() {
+        PhysicsHinge ball1 = new PhysicsHinge(0.0f, new Vector2(-1.0f, -1.0f));
+        PhysicsHinge ball2 = new PhysicsHinge(0.0f, new Vector2(0.0f, -1.0f));
+        PhysicsHinge ball3 = new PhysicsHinge(0.0f, new Vector2(1.0f, -1.0f));
+        PhysicsHinge ball4 = new PhysicsHinge(0.1f, new Vector2(-1.0f, 0.0f));
+        PhysicsHinge ball5 = new PhysicsHinge(0.1f, new Vector2(0.0f, 0.0f));
+        PhysicsHinge ball6 = new PhysicsHinge(0.1f, new Vector2(1.0f, 0.0f));
+        PhysicsHinge ball7 = new PhysicsHinge(0.1f, new Vector2(-1.0f, 1.0f));
+        PhysicsHinge ball8 = new PhysicsHinge(0.1f, new Vector2(0.0f, 1.0f));
+        PhysicsHinge ball9 = new PhysicsHinge(0.1f, new Vector2(1.0f, 1.0f));
+
+        PhysicsManager.GetInstance().physicsHinges.Add(ball1);
+        PhysicsManager.GetInstance().physicsHinges.Add(ball2);
+        PhysicsManager.GetInstance().physicsHinges.Add(ball3);
+        PhysicsManager.GetInstance().physicsHinges.Add(ball4);
+        PhysicsManager.GetInstance().physicsHinges.Add(ball5);
+        PhysicsManager.GetInstance().physicsHinges.Add(ball6);
+        PhysicsManager.GetInstance().physicsHinges.Add(ball7);
+        PhysicsManager.GetInstance().physicsHinges.Add(ball8);
+        PhysicsManager.GetInstance().physicsHinges.Add(ball9);
+
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball1, ball2, 1.0f, 0.1f, 7.0f, 0.3f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball2, ball3, 1.0f, 0.1f, 7.0f, 0.3f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball4, ball5, 1.0f, 0.1f, 7.0f, 0.3f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball5, ball6, 1.0f, 0.1f, 7.0f, 0.3f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball7, ball8, 1.0f, 0.1f, 7.0f, 0.3f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball8, ball9, 1.0f, 0.1f, 7.0f, 0.3f));
+
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball1, ball4, 1.0f, 0.1f, 7.0f, 0.3f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball4, ball7, 1.0f, 0.1f, 7.0f, 0.3f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball2, ball5, 1.0f, 0.1f, 7.0f, 0.3f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball5, ball8, 1.0f, 0.1f, 7.0f, 0.3f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball3, ball6, 1.0f, 0.1f, 7.0f, 0.3f));
+        PhysicsManager.GetInstance().physicsJoints.Add(new PhysicsSpringJoint(ball6, ball9, 1.0f, 0.1f, 7.0f, 0.3f));
     }
 }
